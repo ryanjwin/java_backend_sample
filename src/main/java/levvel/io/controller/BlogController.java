@@ -28,7 +28,8 @@ public class BlogController {
     // view all comments for post 
     @GetMapping("/post/{id}/comment")
     public ResponseEntity<Blog> getBlogComments(@PathVariable String id) {
-        Blog blog = blogService.getBlog(id);
+        // TODO: Implement getBlogComments
+        //Blog blog = blogService.getBlogComments(id);
         return ResponseEntity.ok().body(blog);
     }
     // post cooments for post
