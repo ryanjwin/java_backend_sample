@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/blog")
@@ -30,9 +32,9 @@ public class BlogController {
 
     // view all comments for post 
     @GetMapping("/post/{id}/comment")
-    public ResponseEntity<Comment> getBlogComments(@PathVariable String id) {
-        Comment comment = commentService.getComment(id);
-        return ResponseEntity.ok().body(comment);
+    public ResponseEntity<List<Comment>> getBlogComments(@PathVariable String id) {
+        List<Comment> comments = commentService.getComment(id);
+        return ResponseEntity.ok().body(comments);
     }
     // post cooments for post
     @PostMapping("/post/{id}/comment")
