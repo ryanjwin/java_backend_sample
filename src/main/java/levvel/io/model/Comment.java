@@ -23,5 +23,14 @@ public class Comment {
     String author;
     String text;
     // store id that blog belongs to
-    String blogId;
+    private String blogId;
+
+
+    // getters and setters
+    public void setBlogId(String blogId) {
+        this.blogId = blogId;
+    }
+    public String getBlogID() {
+        return this.blogId;
+    }
 }

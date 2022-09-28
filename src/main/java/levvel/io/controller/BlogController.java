@@ -1,7 +1,9 @@
 package levvel.io.controller;
 
 import levvel.io.model.Blog;
+import levvel.io.model.Comment;
 import levvel.io.service.BlogService;
+import levvel.io.service.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class BlogController {
 
     private BlogService blogService;
+    private CommentService commentService;
 
     @PostMapping("/post")
     public ResponseEntity<Blog> addBlog(@RequestBody Blog blog) {
@@ -27,16 +30,14 @@ public class BlogController {
 
     // view all comments for post 
     @GetMapping("/post/{id}/comment")
-    public ResponseEntity<Blog> getBlogComments(@PathVariable String id) {
-        // TODO: Implement getBlogComments
-        //Blog blog = blogService.getBlogComments(id);
-        return ResponseEntity.ok().body(blog);
+    public ResponseEntity<Comment> getBlogComments(@PathVariable String id) {
+        Comment comment = commentService.getComment(id);
+        return ResponseEntity.ok().body(comment);
     }
     // post cooments for post
     @PostMapping("/post/{id}/comment")
-    public ResponseEntity<Blog> addBlogComment(@PathVariable String id, @RequestBody Blog blog) {
-        // TODO: Implement addBlogComment.
-        //blogService.addBlogComment(id, blog);
-        return ResponseEntity.ok().body(blog);
+    public ResponseEntity<Comment> addBlogComment(@PathVariable String id, @RequestBody Comment comment) {
+        commentService.addComment(comment, id);
+        return ResponseEntity.ok().body(comment);
     }
 }
