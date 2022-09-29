@@ -18,12 +18,14 @@ public class BlogController {
     private BlogService blogService;
     private CommentService commentService;
 
+    // Post Request to add a blog
     @PostMapping("/post")
     public ResponseEntity<Blog> addBlog(@RequestBody Blog blog) {
         blogService.addBlog(blog);
         return ResponseEntity.ok().body(blog);
     }
 
+    // Get the blog at the specified id
     @GetMapping("/post/{id}")
     public ResponseEntity<Blog> getBlog(@PathVariable String id) {
         Blog blog = blogService.getBlog(id);

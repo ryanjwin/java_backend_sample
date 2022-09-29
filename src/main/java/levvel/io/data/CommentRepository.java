@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface CommentRepository extends MongoRepository<Comment, String> {
+    // Add method to find comments that match criteria. Using the blog id
     List<Comment> findByBlogId(String blogId);
 }

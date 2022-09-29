@@ -13,12 +13,15 @@ public class CommentServiceImpl implements CommentService{
     
     private CommentRepository commentRepository;
 
+    // Add a comment to the repository
     @Override
     public void addComment(Comment comment, String blogId) {
+        // set the corresponding blog id
         comment.setBlogId(blogId);
         commentRepository.save(comment);
     }
 
+    // return all comments with blog id
     @Override
     public List<Comment> getComment(String id){
         return commentRepository.findByBlogId(id);
